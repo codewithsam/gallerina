@@ -3,9 +3,12 @@ import React, { Component } from 'react';
 export default class Gallerina extends Component{
     constructor(props){
         super(props);
-        this.GallerinaImages = React.Children.toArray(this.props.children);
+        const GallerinaChildren = React.Children.toArray(this.props.children);
+        this.GallerinaImages = GallerinaChildren.filter( image => image.type.name === "GallerinaImage");
+        this.PageIndicator = GallerinaChildren.find(child => child.type.name === "PageIndicator");
+
         this.state = {
-            selectedIndex: props.startingIndex
+            selectedIndex: props.startingIndex || 0
         }
     }
 
@@ -23,8 +26,10 @@ export default class Gallerina extends Component{
         }
     }
     render(){
-        const {state: {selectedIndex}, GallerinaImages} = this;
-        
+        if(this.PageIndicator){
+            this.PageIndicator = React.cloneElement(this.PageIndicator, {length: this.GallerinaImages.length, selectedIndex: this.state.selectedIndex});
+        }
+        const {state: {selectedIndex}, GallerinaImages, PageIndicator} = this;
         let ActiveImage = GallerinaImages[selectedIndex];
         ActiveImage = React.cloneElement(ActiveImage, {className: 'active'});
 
@@ -32,7 +37,11 @@ export default class Gallerina extends Component{
             <div style={{
                 maxWidth: '100%',
                 height: 'auto'
-            }}>{ActiveImage}</div>
+            }}>
+                {ActiveImage}
+                {/* TODO: Add support for adding PageIndicator to its appropriate place where user has defined <PageIndicator /> */}
+                {PageIndicator}
+            </div>
         )
     }
 }
