@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Gallerina from './Gallerina';
+import Gallerina, {NavLeft, NavRight} from './Gallerina';
 import GallerinaImage from './GallerinaImage';
 import PageIndicator from './PageIndicator';
 
@@ -24,6 +24,9 @@ export default class App extends Component{
       }
     ];
   }
+  imageChanged(i){
+    console.log("Changed image to Index: "+ i);
+  }
   render(){
     const {imgs} = this;
     return(
@@ -39,9 +42,12 @@ export default class App extends Component{
       */
       <Gallerina 
       startingIndex={3} 
-      autoScroll={3000}
+      // autoScroll={3000}
+      onChange={this.imageChanged}
       >
         {imgs.map((image, i) => <GallerinaImage image={image} key={i} />)}
+        <NavLeft />
+        <NavRight />
         <PageIndicator  />
       </Gallerina>
     )
