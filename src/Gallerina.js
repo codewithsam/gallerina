@@ -50,7 +50,7 @@ export default class Gallerina extends Component{
         }
         const {state: {selectedIndex}, GallerinaImages, PageIndicator, NavLeft, NavRight} = this;
         let ActiveImage = GallerinaImages[selectedIndex];
-        ActiveImage = React.cloneElement(ActiveImage, {className: 'active'});
+        ActiveImage = React.cloneElement(ActiveImage, {className: 'active', selectedIndex: selectedIndex});
 
         return(
             <div style={{

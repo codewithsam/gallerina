@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class GallerinaImage extends Component{
-    render(){
-        const {props: {image: {src}}} = this;
-        return(
+export default function GallerinaImage({image: {src, header, footer}, onImageClick, selectedIndex}){
+    return(
+        <div onClick={onImageClick.bind(null, selectedIndex)}>
             <img src={src} alt={src} />
-        )
-    }
+            {header}
+            {footer}
+        </div>
+    )
 }

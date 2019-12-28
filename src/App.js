@@ -8,13 +8,29 @@ export default class App extends Component{
     super(props);
     this.imgs = [
       {
-        src: "https://i.picsum.photos/id/237/400/200.jpg"
+        src: "https://i.picsum.photos/id/237/400/200.jpg",
+        header: <div style={{
+          position: "absolute",
+          left: "0",
+          top: "0",
+          backgroundColor: "rgba(20,20,20,0.3)",
+          fontSize: "20px",
+          color: "#fff"
+        }}>Header Part</div>,
+        footer: <div style={{
+          position: "absolute",
+          left: "0",
+          top: "80%",
+          backgroundColor: "rgba(20,20,20,0.3)",
+          fontSize: "20px",
+          color: "#fff"
+        }}>Footer Part</div>
       },
       {
         src: "https://i.picsum.photos/id/866/400/200.jpg"
       },
       {
-        src: "https://i.picsum.photos/id/93/400/200.jpg?grayscale"
+        src: "https://i.picsum.photos/id/93/400/200.jpg?grayscale",
       },
       {
         src: "https://i.picsum.photos/id/1/400/200.jpg"
@@ -24,16 +40,16 @@ export default class App extends Component{
       }
     ];
   }
-  imageChanged(i){
+  imageChanged = (i) => {
     console.log("Changed image to Index: "+ i);
+  }
+  imageOnClick = (i) => {
+    alert("clicked on image with index: " + i);
   }
   render(){
     const {imgs} = this;
     return(
       /**TODO:
-         * navigators with style and click functionality
-         * passing user defined styling to GallerinaImage
-         * callBack function on image change in carousel
          * ADDITIONAL FEATURES IF TIME PERMITS:
           * add device swipes
           * how many images to show at a time on screen
@@ -41,11 +57,11 @@ export default class App extends Component{
          * 
       */
       <Gallerina 
-      startingIndex={3} 
-      // autoScroll={3000}
+      startingIndex={0} 
+      autoScroll={3000}
       onChange={this.imageChanged}
       >
-        {imgs.map((image, i) => <GallerinaImage image={image} key={i} />)}
+        {imgs.map((image, i) => <GallerinaImage image={image} key={i} onImageClick={this.imageOnClick}/>)}
         <NavLeft />
         <NavRight />
         <PageIndicator  />
