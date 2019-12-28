@@ -1,68 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Gallerina | Fully Customizable Carousel
+This is gallerina, a fully customizable carousel *to the very last bit.*
 
-## Available Scripts
+### Features Prodivede By Gallerina
+* Header and Footer on top of Image
+* Left and Right Nav buttons
+* Page Indicators to let you know which image you are currently on
+* Show any image as you Initial point
+* Autoscroll with custom intervals
+* Fully Customizable by providing css to any of the components
+* Callback for image click
+* Callback on when image is changed either by left or right nav links
 
-In the project directory, you can run:
+```
+    <Gallerina
+        startingIndex={0}
+        autoScroll={3000}
+        onChange={this.imageChanged}
+    >
+    {imgs.map((image, i) => <GallerinaImage image={image} key={i} onImageClick={this.imageOnClick}/>)}
+        <NavLeft />
+        <NavRight />
+        <PageIndicator  />
+    </Gallerina>
+```
 
-### `npm start`
+#### Autoscroll of images
+Pass autoScroll to \<Gallerina /> component with your interval. If autoScroll is passed but no Interval is passed then the default interval will be set.
+If autoScroll is passed with interval, default one will be overridden by your interval.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+<Gallerina
+   autoScroll={Interval}
+>
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### Provide you Start Index
+If you do not want your carousel to start from 0 (first image) you can pass startingIndex prop of type number to \<Gallerina />.
 
-### `npm test`
+```
+<Gallerina
+   startingIndex={index}
+>
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Pass your callback to do stuff when carousel is moved to next Image
+If you want to run some logic after the image is moved to next index then do pass onChange prop to \<Gallerina /> component
 
-### `npm run build`
+```
+<Gallerina
+   onChange={function}
+>
+```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### GallerinaImage: Component that will create an image inside the Gallerina Div
+Pass \<GallerinaImage /> inside \<Gallerina /> component to create an image element.
+GallerinaImage takes following Component:
+* image of type object (schema of object is explained below)
+* onImageClick of type function that will run when image is clicked
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+image prop takes an object with following properties
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+{
+    src: "https://i.picsum.photos/id/237/400/200.jpg", // Takes src for image source
+    header: <YourHeaderCompoennt /> // Its takes custom component that will show on top of image
+    footer: <YourFooterComponent /> // Footer as your custom compoennt that will show on bottom of image
+},
+```
+Full support for styling both components
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### \<NavLeft /> && \<NavRight /> for showing left and right button on iamge
+Left and right button is used to move left/right in carousel. It will run your callback exactly in case autoscroll
+Both of the component takes styles as a prop where you can define your style
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### \<PageIndicator /> to show indicators
+This component also takes styles as prop.

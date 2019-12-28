@@ -10,6 +10,7 @@ export default function PageIndicator({length, styles, selectedIndex}){
             width: "10px",
             height: "10px",
             marginRight: "2px",
+            marginTop: "10px",
             ...styles
         }}></span>)
     }

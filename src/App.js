@@ -58,7 +58,7 @@ export default class App extends Component{
       */
       <Gallerina 
       startingIndex={0} 
-      // autoScroll={3000}
+      autoScroll={3000}
       onChange={this.imageChanged}
       >
         {imgs.map((image, i) => <GallerinaImage image={image} key={i} onImageClick={this.imageOnClick}/>)}
