@@ -20,7 +20,7 @@ export default class App extends Component{
         footer: <div style={{
           position: "absolute",
           left: "0",
-          top: "80%",
+          bottom: "20px",
           backgroundColor: "rgba(20,20,20,0.3)",
           fontSize: "20px",
           color: "#fff"
@@ -58,7 +58,7 @@ export default class App extends Component{
       */
       <Gallerina 
       startingIndex={0} 
-      autoScroll={3000}
+      // autoScroll={3000}
       onChange={this.imageChanged}
       >
         {imgs.map((image, i) => <GallerinaImage image={image} key={i} onImageClick={this.imageOnClick}/>)}

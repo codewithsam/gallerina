@@ -54,8 +54,8 @@ export default class Gallerina extends Component{
 
         return(
             <div style={{
-                maxWidth: '100%',
-                height: 'auto',
+                display: "flex",
+                flexDirection: "Column",
                 position: "relative"
             }}>
                 {ActiveImage}
