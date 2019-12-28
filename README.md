@@ -34,6 +34,8 @@ If autoScroll is passed with interval, default one will be overridden by your in
 >
 ```
 
+![Image](https://i.imgur.com/mc8A7We.png)
+
 #### Provide you Start Index
 If you do not want your carousel to start from 0 (first image) you can pass startingIndex prop of type number to \<Gallerina />.
 
@@ -69,10 +71,16 @@ image prop takes an object with following properties
 ```
 Full support for styling both components
 
+![all](https://i.imgur.com/2QD5N6Z.png)
+
 
 #### \<NavLeft /> && \<NavRight /> for showing left and right button on iamge
 Left and right button is used to move left/right in carousel. It will run your callback exactly in case autoscroll
 Both of the component takes styles as a prop where you can define your style
 
+![Navs](https://i.imgur.com/1Te9OwA.png)
+
 #### \<PageIndicator /> to show indicators
 This component also takes styles as prop.
+
+![btns](https://i.imgur.com/gtrP1xR.png)
